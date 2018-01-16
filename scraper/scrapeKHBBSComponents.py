@@ -14,7 +14,7 @@ def main():
 	return
 
 def get_components(url, componentType):
-	attacks = []
+	components = []
 	soup = get_soup(url)
 	attack_table_rows = soup.find_all("table")[10].find_all("tr")
 	row_iter = iter(attack_table_rows)
@@ -23,10 +23,10 @@ def get_components(url, componentType):
 		items_in_tr = len(tr.findChildren())
 		if items_in_tr > 13 or items_in_tr < 4:	#ignore odd rows that get detected but aren't part of the chart
 			continue
-		attacks.append(parse_component_row(tr, componentType))
-	print("found " + str(len(attacks)) + " " + componentType + "...")
+		components.append(parse_component_row(tr, componentType))
+	print("found " + str(len(components)) + " " + componentType + "...")
 	with open("../data/components/KHBBS" + componentType + ".json", "w") as file_pointer:
-	    json.dump(attacks, file_pointer)
+	    json.dump(components, file_pointer)
 
 
 def parse_component_row(tr, componentType):
