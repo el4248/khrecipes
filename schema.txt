@@ -1,0 +1,29 @@
+Games
+id	INT PK AI UQ
+name	VARCHAR(255)
+
+Characters
+id
+name
+game_id
+
+Components
+id	INT PK AI UQ
+name	VARCHAR(255)
+game_id INT FK
+type VARCHAR(16)
+
+Recipes
+recipe_id	PK AI UQ
+ingredient_id
+product_id
+type
+count
+
+Move_Compatibility
+component_id
+character_id
+
+Recipe_Compatibility
+recipe_id
+character_id
