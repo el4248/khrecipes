@@ -30,11 +30,11 @@ def get_components(url, componentType):
 
 
 def parse_component_row(tr, componentType):
-	attack = {}
+	component = {}
 	td = tr.find_all("td")
-	attack["name"] = str(td[0].renderContents()).lstrip("b'").rstrip("\\n'")
-	attack["game_id"] = 4
-	attack["type"] = componentType
+	component["name"] = str(td[0].renderContents()).lstrip("b'").rstrip("\\n'")
+	component["game_id"] = 4
+	component["type"] = componentType
 
 	#site uses "blank.png" in place of image if not useable by a certain character
 	users = ""
@@ -46,9 +46,9 @@ def parse_component_row(tr, componentType):
 	if character_images[0].get("src") == "bbs/dlterra1.png" : users += "T"
 	if character_images[1].get("src") == "bbs/dlventus1.png" : users += "V"
 	if character_images[2].get("src") == "bbs/dlaqua1.png" : users += "A"
-	attack["users"] = users
+	component["users"] = users
 
-	return attack
+	return component
 
 if __name__ == '__main__':
     main()
