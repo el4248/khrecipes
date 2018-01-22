@@ -18,8 +18,8 @@ def get_recipes():
     parse_table(magic, "magic")
     action = tables[13]
     parse_table(action, "action")
-    shotlock = tables[14]
-    parse_table(shotlock, "shotlock")
+    # shotlock = tables[14]
+    # parse_table(shotlock, "shotlock")
 
 def parse_table(table, productType):
     recipes = []
@@ -29,7 +29,7 @@ def parse_table(table, productType):
     for tr in row_iter:
         recipes.append(parse_recipe_row(tr, productType))
     print("found " + str(len(recipes)) + " " + productType + "...")
-    with open("../data/recipes/KHBBS" + productType + ".json", "w") as file_pointer:
+    with open("../db/data/khbbs/recipes/KHBBS" + productType + ".json", "w") as file_pointer:
         json.dump(recipes, file_pointer)
 
 def parse_recipe_row(tr, productType):

@@ -20,6 +20,7 @@ product_id
 recipe_type
 count
 success
+game_id
 
 Move_Compatibility
 component_id

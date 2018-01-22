@@ -27,7 +27,7 @@ def get_components(url, componentType):
         components.append(parse_component_row(tr, componentType))
         
     print("found " + str(len(components)) + " " + componentType + "...")
-    with open("../data/components/KHBBS" + componentType + ".json", "w") as file_pointer:
+    with open("../db/data/khbbs/components/KHBBS" + componentType + ".json", "w") as file_pointer:
         json.dump(components, file_pointer)
 
 

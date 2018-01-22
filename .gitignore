@@ -106,6 +106,7 @@ venv.bak/
 .mypy_cache/
 
 # --- NODE --- #
+
 # Logs
 logs
 *.log
@@ -167,3 +168,6 @@ typings/
 
 # next.js build output
 .next
+
+# --- Project Specific --- #
+credentials.py
