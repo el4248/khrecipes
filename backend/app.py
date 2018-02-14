@@ -1,4 +1,5 @@
 import os
+import json
 
 from flask import Flask, Response, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
@@ -9,6 +10,7 @@ import db.credentials as credentials
 db = SQLAlchemy()
 
 def create_app():
+    from api.search_service import SearchService
     template_dir = os.path.abspath('../frontend/')
     app = Flask(__name__, template_folder=template_dir, static_folder='../frontend/public')
     app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://" + credentials.db['user'] + ":" + credentials.db['password'] + "@" + credentials.db['hostname'] + "/" + credentials.db['name']
@@ -19,5 +21,11 @@ def create_app():
     @app.route('/')
     def index():
         return render_template('index.html')
+
+    @app.route('/search')
+    def search():
+        search_service = SearchService(db)
+        results = search_service.find_recipe(request.args.get('keywords'), 4)
+        return json.dumps(results)
 
     return app
