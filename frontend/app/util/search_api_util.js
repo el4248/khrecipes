@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export const findRecipe = keywords => (
-    axios('/search?keywords=' + keywords)
+export const findRecipes = keywords => (
+  axios('/search?keywords=' + keywords)
 );
