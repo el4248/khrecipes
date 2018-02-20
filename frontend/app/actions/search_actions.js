@@ -4,7 +4,7 @@ export const RECEIVE_RECIPES = "RECEIVE_RECIPES";
 
 export const receiveRecipes = recipes => ({
   type: RECEIVE_RECIPES,
-  recipes
+  recipes: recipes.data
 });
 
 export const fetchRecipes = keywords => dispatch => (

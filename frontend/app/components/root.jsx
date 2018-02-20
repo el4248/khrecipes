@@ -5,12 +5,14 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import App from './app';
 
 const Root = ({store}) => (
-  <Router>
-    <div>
-      <Route path="/" component={App}>
-      </Route>
-    </div>
-  </Router>
+  <Provider store={store}>
+    <Router>
+      <div>
+        <Route path="/" component={App}>
+        </Route>
+      </div>
+    </Router>
+  </Provider>
 );
 
 export default Root;
