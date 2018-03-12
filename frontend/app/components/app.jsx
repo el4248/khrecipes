@@ -3,7 +3,6 @@ import SearchContainer from './search/search_container';
 const App = ({children}) => (
   <div>
     <SearchContainer/>
-    {children}
   </div>
 );
 
