@@ -18,14 +18,18 @@ def create_app():
     
     db.init_app(app)
 
-    @app.route('/')
-    def index():
-        return render_template('index.html')
-
     @app.route('/search')
     def search():
         search_service = SearchService(db)
         results = search_service.find_recipe(request.args.get('keywords'), 4)
         return json.dumps(results)
+
+    @app.route('/')
+    def index():
+        return render_template('index.html')
+
+    @app.route('/<path:path>')
+    def catch_all(path):
+        return render_template('index.html')
 
     return app
