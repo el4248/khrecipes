@@ -45,3 +45,27 @@ class SearchService():
                 WHERE
                     products.game_id = :game_id AND products.name like :keywords""")
         return self.db.engine.execute(query, keywords=keywords, game_id=game_id).fetchall()
+
+    def __get_products(self, keywords, game_id):
+        query = text ("""SELECT
+                    recipes.id,
+                    products.name as prod_name,
+                    products.type as prod_type,
+                    ingredients.name as ingredient_name,
+                    ingredients.type as ingredient_type,
+                    recipe_type, 
+                    qty, 
+                    success
+                FROM
+                    recipes
+                JOIN
+                    components ingredients
+                ON
+                    recipes.ingredient_id = ingredients.id
+                JOIN 
+                    components products
+                ON
+                    recipes.product_id = products.id
+                WHERE
+                    ingredients.game_id = :game_id AND ingredients.name like :keywords""")
+        return self.db.engine.execute(query, keywords=keywords, game_id=game_id).fetchall()
