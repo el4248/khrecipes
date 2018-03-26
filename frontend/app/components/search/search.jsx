@@ -4,10 +4,17 @@ import RecipeCard from "./recipe_card";
 class SearchView extends React.Component {
   constructor(props) {
     super(props);
+    this._handleKeyPress = this._handleKeyPress.bind(this);
   }
 
   componentWillMount() {
-    this.props.fetchRecipes("ars solum");
+    
+  }
+
+  _handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      this.props.fetchRecipes(document.querySelector('#recipe-search').value);
+    }
   }
 
   render() {
@@ -19,6 +26,7 @@ class SearchView extends React.Component {
 
     return (
       <div>
+        <input id="recipe-search" type="text" placeholder="What do you want to make?" onKeyPress={this._handleKeyPress} onFocus={(e) => e.target.placeholder = ""} onBlur={(e) => e.target.placeholder = "What do you want to make?"}/>
         {recipeCards}
       </div>       
     );
