@@ -28,7 +28,7 @@ def create_app():
     def index():
         return render_template('index.html')
 
-    @app.route('/isearch')#ingredient search, tentative route for testing only
+    @app.route('/searchi')#ingredient search, tentative route for testing only
     def search2():
         search_service = SearchService(db)
         results = search_service.find_product(request.args.get('keywords'), 4)
