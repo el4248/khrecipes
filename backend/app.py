@@ -28,10 +28,10 @@ def create_app():
     def index():
         return render_template('index.html')
 
-    @app.route('/searchi')#ingredient search, tentative route for testing only
-    def search2():
+    @app.route('/searchbyingredient')
+    def searchbyingredient():
         search_service = SearchService(db)
-        results = search_service.find_product(request.args.get('keywords'), 4)
+        results = search_service.find_recipe_by_ingredient(request.args.get('keywords'), 4)
         return json.dumps(results)
 
     @app.route('/<path:path>')
