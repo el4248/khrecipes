@@ -28,6 +28,12 @@ def create_app():
     def index():
         return render_template('index.html')
 
+    @app.route('/isearch')#ingredient search, tentative route for testing only
+    def search2():
+        search_service = SearchService(db)
+        results = search_service.find_product(request.args.get('keywords'), 4)
+        return json.dumps(results)
+
     @app.route('/<path:path>')
     def catch_all(path):
         return render_template('index.html')

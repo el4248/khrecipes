@@ -10,7 +10,8 @@ Flask_SQLAlchemy == 2.3.2
 # backend\api\search_service.py: 1
 # backend\db\loadKHBBSComponents.py: 4
 # backend\db\loadKHBBSRecipes.py: 4
-SQLAlchemy == 1.2.2
+SQLAlchemy == 1.2.2*
+*might require mysqldb
 
 # backend\scraper\util.py: 1
 beautifulsoup4 == 4.6.0

@@ -22,6 +22,10 @@ class SearchService():
                 }
         return recipes
 
+    def find_product(self, keywords, game_id):
+        query_results = self.__get_products(keywords, game_id)    #TODO: implement using ORM notions
+        return self.__consolidate_recipes(query_results)
+
     def __get_recipes(self, keywords, game_id):
         query = text("""SELECT
                     recipes.id,
